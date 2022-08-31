@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-x+fg&=m53t(2vqm)e6hq5kbxf2!w4#+*at!n(td)l(3@h^rdch
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#The star allows django to be accessed by any ip
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
