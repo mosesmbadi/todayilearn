@@ -25,9 +25,12 @@ on the api endpoint try posting with this
 Running with Docker
 1. Run
 docker build . -t todayilearn-v0.0
-docker run todayilearn-v1.0
+--> 8181 is host port  || 4000 is container port <--
+docker run -d -p 8181:4000 todayilearn-v1.0
 
 
 # Tips
-Run: docker-machine ls
+Run:
+docker-machine ls
+docker inspect todayilearn-v1.0
 To check everything is working
