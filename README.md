@@ -28,6 +28,17 @@ docker build . -t todayilearn-v0.0
 --> 8181 is host port  || 4000 is container port <--
 docker run -d -p 8181:4000 todayilearn-v1.0
 
+## Workflow
+# Backend
+Models in django populate/handle the db
+Serializers get data from db (through/from models) and serializes to json
+Views just handles requests
+
+# Frontend
+react-router-dom handles navigation
+npx create-react-app frontend used to create react app
+
+
 
 # Tips
 Run:
