@@ -18,7 +18,7 @@ At teh moment you have to log in as Admin in admin panel then check the api
 on the api endpoint try posting with this
 {
     "blog_title": "This is a blog title",
-    "completed": false
+    "blog_body": ""This is a blog body""
 }
 
 

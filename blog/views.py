@@ -12,14 +12,15 @@ class BlogListApiView(APIView):
     # 1. List all
     def get(self, request, *args, **kwargs):
         blog_title = Blog.objects.filter(user = request.user.id)
+        blog_body = Blog.objects.filter(user = request.user.id)
         serializer = BlogSerializer(blog_title, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     # 2. Create
     def post(self, request, *args, **kwargs):
         data = {
-            'blog_title': request.data.get('task'), 
-            'completed': request.data.get('completed'), 
+            'blog_title': request.data.get('blog_title'), 
+            'blog_body': request.data.get('blog_body'), 
             'user': request.user.id
         }
         return Response(data, status=status.HTTP_200_OK)
@@ -60,7 +61,7 @@ class BlogDetailApiView(APIView):
             )
         data = {
             'blog_title': request.data.get('blog_title'), 
-            'completed': request.data.get('completed'), 
+            'blog_body': request.data.get('blog_body'), 
             'user': request.user.id
         }
         serializer = BlogSerializer(instance = blog_instance, data=data, partial = True)
