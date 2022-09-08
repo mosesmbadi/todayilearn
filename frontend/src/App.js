@@ -1,27 +1,33 @@
 import React, { Component } from 'react';
-import Articles from './components/blog';
 
 class App extends Component {
-  render() {
-    return (
-        <Articles articles={this.state.articles} />
-    )
-}
-
-
-  //creating state
   state = {
-    articles: []
+    blogs: []
+  };
+
+  async componentDidMount() {
+    try {
+      const res = await fetch('http://127.0.0.1:8000/api/');
+      const blogs = await res.json();
+      this.setState({
+        blogs
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
-  componentDidMount() {
-    //this endpoint seem to work, need to fix one from django
-    fetch('http://jsonplaceholder.typicode.com/users')
-    .then(res => res.json())
-    .then((data) => {
-      this.setState({ articles: data })
-    })
-    .catch(console.log)
+  render() {
+    return (
+      <div>
+        {this.state.blogs.map(item => (
+          <div key={item.id}>
+            <h1>{item.title}</h1>
+            <span>{item.body}</span>
+          </div>
+        ))}
+      </div>
+    );
   }
 }
 
