@@ -2,6 +2,12 @@
 This is a fully containerized RESTful API created with dgango rest framework. React is used to show how the RESTfull API can be consumed.
  The goal is to build and deploy a microservice api/architecture. 
 
+Project Structure
+   - todayilearn
+      - backend files
+      - frontend
+        -frontend files
+
 Steps to run
 1. Create virtual env 
 2. Install dependencies
@@ -29,6 +35,8 @@ Running with Docker
 docker build . -t todayilearn-v0.0
 --> 8181 is host port  || 4000 is container port <--
 docker run -d -p 8181:4000 todayilearn-v1.0
+
+
 
 
 # Tips
