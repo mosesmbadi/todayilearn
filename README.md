@@ -30,13 +30,25 @@ At teh moment you have to log in as Admin in admin panel then check the api
 
 
 
-Running with Docker
-1. Run
+
+
+## Running with Docker
+# Case 1: Running Without Dockercompose
+After Creating Dockerfile
+
+```
 docker build . -t todayilearn-v0.0
---> 8181 is host port  || 4000 is container port <--
+docker run -i -t todayilearn sh
+python3 manage.py makemigrations && python3 manage.py migrate
+python3 manage.py createsuperuser
 docker run -d -p 8181:4000 todayilearn-v1.0
 
+```
+--> 8181 is host port  || 4000 is container port <--
 
+
+
+# Case 2: Running With Dockercompose
 
 
 # Tips
