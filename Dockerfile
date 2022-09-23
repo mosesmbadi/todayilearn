@@ -1,26 +1,15 @@
-# base image  
-FROM python:3.8   
-# setup environment variable  
-ENV DockerHOME=/home/app/todayilearn 
+FROM ubuntu:20.04
 
-# set work directory  
-RUN mkdir -p $DockerHOME  
+RUN apt-get update && apt-get install -y tzdata && apt install -y python3.8 python3-pip
 
-# where your code lives  
-WORKDIR $DockerHOME  
+RUN apt install python3-dev libpq-dev nginx -y
 
-# set environment variables  
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1  
+RUN pip install django gunicorn psycopg2
 
-# install dependencies  
-RUN pip install --upgrade pip  
+ADD . /app
 
-# copy whole project to your docker home directory. 
-COPY . $DockerHOME  
-# run this command to install all dependencies  
-RUN pip install -r requirements.txt  
-# port where the Django app runs  
-EXPOSE 8000  
-# start server  
-CMD python manage.py runserver 
+WORKDIR /app
+
+EXPOSE 8000
+
+CMD ["gunicorn", "--bind", ":8000", "--workers", "3", "djangokubernetesproject.wsgi"]
