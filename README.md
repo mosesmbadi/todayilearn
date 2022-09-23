@@ -56,4 +56,3 @@ Run:
 docker-machine ls
 docker inspect todayilearn-v1.0
 To check everything is working
-
